@@ -17,6 +17,7 @@ clear
 
 #-------------
 #LightDM setup
+#https://github.com/GabrielTenma/lightdm-gab-gradient | My theme of choice
 #-------------
 sudo pacman --noconfirm -S xorg-server lightdm lightdm-webkit2-greeter
 cd /usr/share/lightdm-webkit/themes/
@@ -28,11 +29,23 @@ sudo pacman -S $editor
 sudo $editor /etc/lightdm/lightdm-webkit2-greeter.conf
 echo "Manual intervention required. Instructions:"
 echo "Under [Seat:*], uncomment #greeter-session=, and change its value to lightdm-webkit2-greeter"
-read -p "Press enter to continue"
+read -p "$editor will be opened. Press enter"
 sudo $editor /etc/lightdm/lightdm.conf
+sudo systemctl enable lightdm
 clear
 
 #-----
 #Fonts (required for lightdm theme, and some Office docs)
 #-----
-yay -S --noconfirm ttf-iosevka ttf-windows
+yay -S --noconfirm ttf-iosevka ttf-windows otf-ipafont
+
+#-------------
+#Openbox setup
+#https://github.com/owl4ce/dotfiles | My theme of choice
+#-------------
+yay -S rsync python psmisc xorg-xprop xorg-xwininfo imagemagick ffmpeg wireless_tools openbox \
+pulseaudio pulseaudio-alsa alsa-utils brightnessctl nitrogen dunst tint2 gsimplecal rofi \
+qt5-styleplugins lxsession xautolock rxvt-unicode-truecolor-wide-glyphs xclip scrot thunar \
+thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler viewnior mpv mpd mpc ncmpcpp \
+pavucontrol parcellite neofetch w3m htop picom-git obmenu-generator gtk2-perl playerctl xsettingsd zsh
+
