@@ -54,7 +54,7 @@ yay -S --noconfirm rsync python psmisc xorg-xprop xorg-xwininfo imagemagick ffmp
 pulseaudio pulseaudio-alsa alsa-utils brightnessctl nitrogen dunst tint2 gsimplecal rofi \
 qt5-styleplugins lxsession xautolock rxvt-unicode-truecolor-wide-glyphs xclip scrot thunar \
 thunar-archive-plugin thunar-volman ffmpegthumbnailer tumbler viewnior mpv mpd mpc ncmpcpp \
-pavucontrol parcellite neofetch w3m htop picom-git obmenu-generator gtk2-perl playerctl xsettingsd zsh
+pavucontrol parcellite neofetch w3m htop picom-git obmenu-generator gtk2-perl playerctl xsettingsd zsh nerd-fonts
 
 #-------------
 #Theme install
@@ -66,11 +66,14 @@ rsync -avxHAXP --exclude '.git*' --exclude 'LICENSE' --exclude '*.md' dotfiles/ 
 #---------
 #ZSH setup
 #---------
+mv ~/.oh-my-zsh/ ~/ohmyzsh
 chsh -s $(command -v zsh)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
+mv ~/ohmyzsh/custom/themes/ ~/.oh-my-zsh/themes/ -R
+rm -rf ~/ohmyzsh/
 
 #-------------
 #Icons install
