@@ -11,3 +11,5 @@ An installer for Arch intended for UEFI systems. Installs Zen kernel.
 An installer for Arch intended for BIOS systems (using GPT). Also installs Zen.
 ## vbox-speed.sh
 An installer intended for Virtualbox. Requires much less user intervention and also installs the Guest Additions.
+##
+No plans of making an MBR installer (can't be bothered)
