@@ -5,4 +5,9 @@ Including regular BIOS and UEFI installs separately, and a swift install for Vir
 
 Additionally contains a post-install script with my personally favorite software
 
-(The mbr-install.sh is intended for BIOS systems (non-EFI) using GPT, not actually MBR, just too much hassle to change the name)
+## arch-install.sh
+An installer for Arch intended for UEFI systems. Installs Zen kernel.
+## bios-install.sh
+An installer for Arch intended for BIOS systems (using GPT). Also installs Zen.
+## vbox-speed.sh
+An installer intended for Virtualbox. Requires much less user intervention and also installs the Guest Additions.
