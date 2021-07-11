@@ -2,7 +2,9 @@
 echo "Welcome to Arch Linux Magic Script"
 echo "Credit: BugsWriter"
 pacman --noconfirm -Sy archlinux-keyring
-loadkeys no
+echo "Keymap: "
+read keymap
+loadkeys $keymap
 timedatectl set-ntp true
 clear
 lsblk
@@ -30,12 +32,14 @@ arch-chroot /mnt ./arch_install2.sh
 exit 
 
 #part2
-ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+echo "Time [Region/City]: "
+read time
+ln -sf /usr/share/zoneinfo/$time /etc/localtime
 hwclock --systohc
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo "KEYMAP=no" > /etc/vconsole.conf
+echo "KEYMAP=$keymap" > /etc/vconsole.conf
 echo "Hostname: "
 read hostname
 echo $hostname > /etc/hostname
