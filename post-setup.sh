@@ -19,13 +19,16 @@ clear
 
 #-------------
 #LightDM setup
-#https://github.com/GabrielTenma/lightdm-gab-gradient | My theme of choice
+#https://github.com/GabrielTenma/lightdm-gab-gradient | No longer functional
+#https://github.com/sujaykumarh/lightdm-theme-sapphire | My 2nd theme of choice
 #-------------
-sudo pacman --noconfirm -S xorg-server lightdm lightdm-webkit2-greeter
-cd /usr/share/lightdm-webkit/themes/
-sudo git clone https://github.com/GabrielTenma/lightdm-gab-gradient
-echo "Manual intervention required. Instructions:"
-echo "Change webkit_theme to: lightdm-gab-gradient"
+yay -S lightdm-webkit2-theme-sapphire
+#sudo pacman --noconfirm -S xorg-server lightdm lightdm-webkit2-greeter
+#cd /usr/share/lightdm-webkit/themes/
+#sudo git clone https://github.com/GabrielTenma/lightdm-gab-gradient
+#echo "Manual intervention required. Instructions:"
+#echo "Change webkit_theme to: lightdm-gab-gradient"
+echo "Change webkit_theme to: lightdm-theme-sapphire"
 read -p "Enter editor to use: " editor
 sudo pacman -S $editor
 sudo $editor /etc/lightdm/lightdm-webkit2-greeter.conf
@@ -76,6 +79,9 @@ tar -Jxvf Papirus-Custom.tar.xz && tar -Jxvf Papirus-Dark-Custom.tar.xz
 sudo ln -vs ~/.icons/Papirus-Custom /usr/share/icons/Papirus-Custom
 sudo ln -vs ~/.icons/Papirus-Dark-Custom /usr/share/icons/Papirus-Dark-Custom
 popd
-sudo chmod u+s $(command -v brightnessctl)
 
+#-----
+#Other (clean-up etc.)
+#-----
+sudo chmod u+s $(command -v brightnessctl)
 fc-cache -rv
