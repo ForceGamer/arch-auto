@@ -31,6 +31,8 @@ arch-chroot /mnt ./arch_install2.sh
 exit 
 
 #part2
+read -p "Keymap: " keymap
+localectl set-keymap no
 echo "Time [Region/City]: "
 read time
 ln -sf /usr/share/zoneinfo/$time /etc/localtime
@@ -58,7 +60,7 @@ pacman --noconfirm -S dhcpcd networkmanager
 systemctl enable NetworkManager.service 
 rm /arch_install2.sh
 
-#visudo
+visudo
 echo "Enter Username: "
 read username
 useradd -m -G wheel -s /bin/bash $username
