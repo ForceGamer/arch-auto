@@ -1,15 +1,18 @@
 #Script 1
 echo "Welcome to Arch Linux Magic Script"
+echo "Credit: BugsWriter"
 pacman --noconfirm -Sy archlinux-keyring
-loadkeys us
+loadkeys no
 timedatectl set-ntp true
+clear
+lsblk
 echo "Enter the drive: "
 read drive
 cfdisk $drive 
 echo "Enter the linux partition: "
 read partition
 mkfs.ext4 $partition 
-read -p "Did you also created efi partition? [yn]" answer
+read -p "Did you create an EFI partition? [yn]" answer
 
 if [[ $answer = y ]] ; then
   echo "Enter EFI partition: "
@@ -32,7 +35,7 @@ hwclock --systohc
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo "KEYMAP=us" > /etc/vconsole.conf
+echo "KEYMAP=no" > /etc/vconsole.conf
 echo "Hostname: "
 read hostname
 echo $hostname > /etc/hostname
@@ -41,7 +44,7 @@ echo "::1             localhost" >> /etc/hosts
 echo "127.0.1.1       $hostname.localdomain $hostname" >> /etc/hosts
 mkinitcpio -P
 passwd
-pacman --noconfirm -S grub efibootmgr os-prober
+pacman --noconfirm -S grub efibootmgr
 echo "Enter EFI partition: " 
 read efipartition
 mkdir /boot/efi
@@ -53,8 +56,10 @@ systemctl enable NetworkManager.service
 rm /arch_install2.sh
 
 #visudo
-#echo "Enter Username: "
-#read username
-#useradd -m -G wheel -s /bin/bash $username
-#passwd $username
+echo "Enter Username: "
+read username
+useradd -m -G wheel -s /bin/bash $username
+echo "Password: "
+read password
+passwd $password
 echo "Pre-Installation Finish Reboot now"
