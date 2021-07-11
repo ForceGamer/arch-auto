@@ -22,16 +22,18 @@ clear
 #https://github.com/GabrielTenma/lightdm-gab-gradient | No longer functional
 #https://github.com/sujaykumarh/lightdm-theme-sapphire | My 2nd theme of choice
 #-------------
-yay -S lightdm-webkit2-theme-sapphire
-#sudo pacman --noconfirm -S xorg-server lightdm lightdm-webkit2-greeter
+yay -S --noconfirm lightdm-webkit2-theme-sapphire
+sudo pacman --noconfirm -S xorg-server lightdm lightdm-webkit2-greeter
 #cd /usr/share/lightdm-webkit/themes/
 #sudo git clone https://github.com/GabrielTenma/lightdm-gab-gradient
 #echo "Manual intervention required. Instructions:"
 #echo "Change webkit_theme to: lightdm-gab-gradient"
+clear
 echo "Change webkit_theme to: lightdm-theme-sapphire"
 read -p "Enter editor to use: " editor
 sudo pacman -S $editor
 sudo $editor /etc/lightdm/lightdm-webkit2-greeter.conf
+clear
 echo "Manual intervention required. Instructions:"
 echo "Under [Seat:*], uncomment #greeter-session=, and change its value to lightdm-webkit2-greeter"
 read -p "$editor will be opened. Press enter"
