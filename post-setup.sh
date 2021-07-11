@@ -87,3 +87,4 @@ popd
 sudo chmod u+s $(command -v brightnessctl)
 fc-cache -rv
 echo "Setup finished! Just write "sudo reboot" and enjoy!"
+cd ~ && sudo rm ./post-setup.sh
