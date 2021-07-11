@@ -14,4 +14,4 @@ No plans of making an MBR installer (can't be bothered)
 ## vbox-speed.sh
 An installer intended for Virtualbox. Requires much less user intervention and also installs the Guest Additions.
 ## post-install.sh
-A complete download, install, and setup of my favorite software.
+A complete download, install, and setup of my favorite software, after the Arch install is finished.
