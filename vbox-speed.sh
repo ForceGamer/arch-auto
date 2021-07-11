@@ -43,6 +43,7 @@ grub-install --target=i386-pc /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm -S dhcpcd networkmanager 
 systemctl enable NetworkManager.service 
+pacman --noconfirm -S virtualbox-guest-utils
 rm /arch_install2.sh
 
 #visudo
