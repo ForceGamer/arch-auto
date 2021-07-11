@@ -22,9 +22,9 @@ mount $partition /mnt
 pacstrap /mnt base base-devel linux-zen linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
-sed '1,/^#part2$/d' arch_install.sh > /mnt/arch_install2.sh
-chmod +x /mnt/arch_install2.sh
-arch-chroot /mnt ./arch_install2.sh
+sed '1,/^#part2$/d' mbr-install.sh > /mnt/mbr-install2.sh
+chmod +x /mnt/mbr-install2.sh
+arch-chroot /mnt ./mbr-install2.sh
 exit 
 
 #part2
