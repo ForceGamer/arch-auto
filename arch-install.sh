@@ -26,9 +26,9 @@ mount $partition /mnt
 pacstrap /mnt base base-devel linux-zen linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
-sed '1,/^#part2$/d' arch_install.sh > /mnt/arch_install2.sh
-chmod +x /mnt/arch_install2.sh
-arch-chroot /mnt ./arch_install2.sh
+sed '1,/^#part2$/d' arch-install.sh > /mnt/arch-install2.sh
+chmod +x /mnt/arch-install2.sh
+arch-chroot /mnt ./arch-install2.sh
 exit 
 
 #part2
@@ -60,7 +60,7 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm -S dhcpcd networkmanager 
 systemctl enable NetworkManager.service 
-rm /arch_install2.sh
+rm /arch-install2.sh
 
 visudo
 echo "Enter Username: "
