@@ -17,7 +17,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 sed '1,/^#part2$/d' vbox-speed.sh > /mnt/vbox-speed2.sh
 chmod +x /mnt/vbox-speed2.sh
 arch-chroot /mnt ./vbox-speed2.sh
-exit 
+reboot 
 
 #part2
 echo "Keymap: "
@@ -30,12 +30,10 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=$keymap" > /etc/vconsole.conf
-echo "Hostname: "
-read hostname
-echo $hostname > /etc/hostname
+echo arch-vm > /etc/hostname
 echo "127.0.0.1       localhost" >> /etc/hosts
 echo "::1             localhost" >> /etc/hosts
-echo "127.0.1.1       $hostname.localdomain $hostname" >> /etc/hosts
+echo "127.0.1.1       arch-vm.localdomain arch-vm" >> /etc/hosts
 mkinitcpio -P
 passwd
 pacman --noconfirm -S grub 
@@ -44,7 +42,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm -S dhcpcd networkmanager 
 systemctl enable NetworkManager.service 
 pacman --noconfirm -S virtualbox-guest-utils
-rm /arch_install2.sh
+rm /vbox-speed2.sh
 
 #visudo
 #echo "Enter Username: "
@@ -52,4 +50,3 @@ rm /arch_install2.sh
 #useradd -m -G wheel -s /bin/bash $username
 #passwd $username
 #echo "Pre-Installation Finish Reboot now"
-reboot
