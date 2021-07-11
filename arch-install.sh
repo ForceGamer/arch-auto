@@ -23,7 +23,7 @@ if [[ $answer = y ]] ; then
 fi
 
 mount $partition /mnt 
-pacstrap /mnt base base-devel linux linux-firmware
+pacstrap /mnt base base-devel linux-zen linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
 sed '1,/^#part2$/d' arch_install.sh > /mnt/arch_install2.sh
