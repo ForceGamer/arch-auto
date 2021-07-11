@@ -63,7 +63,5 @@ rm /arch_install2.sh
 echo "Enter Username: "
 read username
 useradd -m -G wheel -s /bin/bash $username
-echo "Password: "
-read password
-passwd $password
+passwd $username
 echo "Pre-Installation Finish Reboot now"
