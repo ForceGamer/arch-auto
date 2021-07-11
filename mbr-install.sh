@@ -49,6 +49,8 @@ echo "127.0.1.1       $hostname.localdomain $hostname" >> /etc/hosts
 mkinitcpio -P
 passwd
 pacman --noconfirm -S grub
+echo "Enter drive (not partition): "
+read drive
 grub-install --target=i386-pc $drive
 grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm -S dhcpcd networkmanager 
