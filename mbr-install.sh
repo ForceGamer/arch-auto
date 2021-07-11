@@ -53,7 +53,7 @@ grub-install --target=i386-pc $drive
 grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm -S dhcpcd networkmanager 
 systemctl enable NetworkManager.service 
-rm /arch_install2.sh
+rm /mbr-install2.sh
 
 visudo
 echo "Enter Username: "
