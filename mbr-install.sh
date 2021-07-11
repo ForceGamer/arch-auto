@@ -23,7 +23,7 @@ if [[ $answer = y ]] ; then
 fi
 
 mount $partition /mnt 
-pacstrap /mnt base base-devel linux linux-firmware
+pacstrap /mnt base base-devel linux-zen linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
 sed '1,/^#part2$/d' arch_install.sh > /mnt/arch_install2.sh
@@ -32,6 +32,7 @@ arch-chroot /mnt ./arch_install2.sh
 exit 
 
 #part2
+read -p "Keymap: " keymap
 echo "Time [Region/City]: "
 read time
 ln -sf /usr/share/zoneinfo/$time /etc/localtime
@@ -57,7 +58,7 @@ pacman --noconfirm -S dhcpcd networkmanager
 systemctl enable NetworkManager.service 
 rm /arch_install2.sh
 
-#visudo
+visudo
 echo "Enter Username: "
 read username
 useradd -m -G wheel -s /bin/bash $username
