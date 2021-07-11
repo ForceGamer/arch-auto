@@ -20,6 +20,7 @@ exit
 
 #part2
 read -p "Keymap: " keymap
+localectl set-keymap $keymap
 time=Europe/Berlin
 ln -sf /usr/share/zoneinfo/$time /etc/localtime
 hwclock --systohc
