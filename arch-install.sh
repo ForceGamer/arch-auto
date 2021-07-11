@@ -1,9 +1,8 @@
 #Script 1
 echo "Welcome to Arch Linux Magic Script"
-echo "Credit: BugsWriter"
+echo "Credits: BugsWriter"
 pacman --noconfirm -Sy archlinux-keyring
-echo "Keymap: "
-read keymap
+read -p "Keymap: " keymap
 loadkeys $keymap
 timedatectl set-ntp true
 clear
