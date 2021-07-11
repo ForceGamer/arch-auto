@@ -14,9 +14,9 @@ mount /dev/sda2 /mnt
 pacstrap /mnt base base-devel linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 
-sed '1,/^#part2$/d' arch_install.sh > /mnt/arch_install2.sh
+sed '1,/^#part2$/d' vbox-speed.sh > /mnt/vbox-speed2.sh
 chmod +x /mnt/arch_install2.sh
-arch-chroot /mnt ./arch_install2.sh
+arch-chroot /mnt ./vbox-speed2.sh
 exit 
 
 #part2
