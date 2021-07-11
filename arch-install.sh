@@ -2,7 +2,8 @@
 echo "Welcome to Arch Linux Magic Script"
 echo "Credits: BugsWriter"
 pacman --noconfirm -Sy archlinux-keyring
-read -p "Keymap: " keymap
+echo "Keymap: "
+read keymap
 loadkeys $keymap
 timedatectl set-ntp true
 clear
@@ -31,7 +32,8 @@ arch-chroot /mnt ./arch_install2.sh
 exit 
 
 #part2
-read -p "Keymap: " keymap
+echo "Keymap: "
+read keymap
 localectl set-keymap no
 echo "Time [Region/City]: "
 read time
