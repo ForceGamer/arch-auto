@@ -17,7 +17,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 sed '1,/^#part2$/d' vbox-speed.sh > /mnt/vbox-speed2.sh
 chmod +x /mnt/vbox-speed2.sh
 arch-chroot /mnt ./vbox-speed2.sh
-reboot 
+reboot
+exit
 
 #part2
 echo "Keymap: "
