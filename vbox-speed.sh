@@ -2,7 +2,8 @@
 echo "Welcome to Arch Linux Magic Script"
 echo "Credits: BugsWriter"
 pacman --noconfirm -Sy archlinux-keyring
-read -p "Keymap: " keymap
+echo "Keymap: "
+read keymap
 loadkeys $keymap
 timedatectl set-ntp true
 cfdisk /dev/sda
@@ -19,7 +20,8 @@ arch-chroot /mnt ./arch_install2.sh
 exit 
 
 #part2
-read -p "Keymap: " keymap
+echo "Keymap: "
+read keymap
 localectl set-keymap $keymap
 time=Europe/Berlin
 ln -sf /usr/share/zoneinfo/$time /etc/localtime
@@ -28,7 +30,8 @@ echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "KEYMAP=$keymap" > /etc/vconsole.conf
-read -p "Hostname: " hostname
+echo "Hostname: "
+read hostname
 echo $hostname > /etc/hostname
 echo "127.0.0.1       localhost" >> /etc/hosts
 echo "::1             localhost" >> /etc/hosts
