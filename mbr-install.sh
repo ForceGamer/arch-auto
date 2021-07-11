@@ -14,10 +14,10 @@ cfdisk $drive
 echo "Enter the linux partition: "
 read partition
 mkfs.ext4 $partition 
-read -p "Did you create an EFI partition? [yn]" answer
+read -p "Did you create a boot partition? [yn]" answer
 
 if [[ $answer = y ]] ; then
-  echo "Enter EFI partition: "
+  echo "Enter boot partition: "
   read efipartition
   mkfs.vfat -F 32 $efipartition
 fi
@@ -48,12 +48,12 @@ echo "::1             localhost" >> /etc/hosts
 echo "127.0.1.1       $hostname.localdomain $hostname" >> /etc/hosts
 mkinitcpio -P
 passwd
-pacman --noconfirm -S grub efibootmgr
-echo "Enter EFI partition: " 
+pacman --noconfirm -S grub
+echo "Enter boot partition: " 
 read efipartition
 mkdir /boot/efi
 mount $efipartition /boot/efi 
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
+grub-install --target=i386-pc $drive
 grub-mkconfig -o /boot/grub/grub.cfg
 pacman --noconfirm -S dhcpcd networkmanager 
 systemctl enable NetworkManager.service 
