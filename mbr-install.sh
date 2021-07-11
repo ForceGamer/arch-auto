@@ -14,13 +14,9 @@ cfdisk $drive
 echo "Enter the linux partition: "
 read partition
 mkfs.ext4 $partition 
-read -p "Did you create a boot partition? [yn]" answer
-
-if [[ $answer = y ]] ; then
-  echo "Enter boot partition: "
-  read efipartition
-  mkfs.vfat -F 32 $efipartition
-fi
+echo "Enter boot partition: "
+read efipartition
+mkfs.vfat -F 32 $efipartition
 
 mount $partition /mnt 
 pacstrap /mnt base base-devel linux-zen linux-firmware
